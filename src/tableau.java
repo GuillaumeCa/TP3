@@ -131,28 +131,28 @@ public class tableau {
 	
 	public static int dichotomie(int val, int[] tab) {
 		 int a = 0, b = tab.length-1;
-		 int i = 0;
-		 while (i < tab.length) {
+		 while (a < b) {
 			 int mid = (a + b)/2;
-			 if (tab[mid] == val) {
-				 return mid;
+			 if (b - a == 1) {
+				 if (tab[a] == val) return a;
+				 else if (tab[b] == val) return b;
+				 else return -1;
 			 } else {
 				 if (tab[mid] > val) {
-					 b--;
+					 b = mid;
 				 } else {
-					 a++;
+					 a = mid;
 				 }
 			 }
-			 i++;
 		 }
-		 return 1;
+		 return -1;
 	}
 	
 	public static void main(String[] args) {
 //		affichage1D(tableau1D(4));
 //		affichage2D(tableau2D(3,4));
 
-		int[] tab = {1,2,4,7,12,15,21,34,42,45};
+		int[] tab = {1,2,4,7,12,15,21,34,42,45,52};
 		int moy = moyenne(tab);
 //		System.out.println("moyenne : " + moy);
 //		recherche(tab,moy);
@@ -160,6 +160,8 @@ public class tableau {
 		affichage1D(tab);
 //		affichage1D(tri(tab));
 //		System.out.println(recherche(3, tab));
-		System.out.println(dichotomie(45, tab));
+		System.out.println(dichotomie(4, tab));
+		float test = (float) 3/5;
+		System.out.println(test);
 	}
 }
